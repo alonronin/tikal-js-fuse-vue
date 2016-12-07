@@ -10,40 +10,31 @@
       </el-submenu>
       <el-menu-item index="3">Orders</el-menu-item>
     </el-menu>
-    <h2>{{ count }}</h2>
+
     <articles :articleList="articles"></articles>
   </div>
 </template>
 
 <script>
-import 'element-ui/lib/theme-default/index.css'
-import db from './db'
-import Hello from './components/Hello'
-import Articles from './components/Articles'
+  import 'element-ui/lib/theme-default/index.css'
+  import Hello from './components/Hello'
+  import Articles from './components/Articles'
 
-export default {
-  name: 'app',
-  firebase: {
-    articles: db.ref('/stream').limitToLast(25),
-  },
-  computed: {
-    count() {
-      return this.articles.length
+  export default {
+    props: ['articles'],
+    components: {
+      Hello,
+      Articles
     }
-  },
-  components: {
-    Hello,
-    Articles
   }
-}
 
 </script>
 
 <style>
-body {
-  font-family: Helvetica Neue,Helvetica,PingFang SC,Hiragino Sans GB,Microsoft YaHei,SimSun,sans-serif;
-  font-weight: 400;
-  -webkit-font-smoothing: antialiased
-}
+  body {
+    font-family: Helvetica Neue, Helvetica, PingFang SC, Hiragino Sans GB, Microsoft YaHei, SimSun, sans-serif;
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased
+  }
 
 </style>

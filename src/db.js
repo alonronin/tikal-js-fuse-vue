@@ -1,14 +1,11 @@
-import firebase from 'firebase'
+import Dexie from 'dexie';
 
-const config = {
-  apiKey: "AIzaSyA-HlcV4jtbhB0sL2D74SK9RVH9oZIQgVU",
-  authDomain: "js-fuseday-2016-stream.firebaseapp.com",
-  databaseURL: "https://js-fuseday-2016-stream.firebaseio.com",
-  storageBucket: "js-fuseday-2016-stream.appspot.com",
-  messagingSenderId: "533084422648"
-};
+const db = new Dexie("feed");
 
-const firebaseApp = firebase.initializeApp(config);
-const db = firebaseApp.database();
+db.version(1).stores({
+  articles: "&uuid, title, url, text, author, published"
+});
+
+db.articles.bulkPut(require('./articles.json'));
 
 export default db;
