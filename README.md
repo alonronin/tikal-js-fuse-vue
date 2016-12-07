@@ -2,6 +2,9 @@
 
 > A Vue.js project
 
+## Online Demo
+https://tikal-vuejs.herokuapp.com/
+
 ## Build Setup
 
 ``` bash
