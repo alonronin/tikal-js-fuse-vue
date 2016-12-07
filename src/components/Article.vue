@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>{{ $route.params.id }} / {{ article.name }}</h1>
+    <h1>{{ article.title }}</h1>
     <h2>by {{ article.author }}</h2>
     <div>{{ article.text }}</div>
   </div>
