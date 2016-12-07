@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <el-menu theme="dark" default-active="1" class="el-menu-demo" mode="horizontal" @select="handleSelect">
+    <el-menu theme="dark" default-active="1" class="el-menu-demo" mode="horizontal">
       <el-menu-item index="1">Processing Center</el-menu-item>
       <el-submenu index="2">
         <template slot="title">Workspace</template>
@@ -21,25 +21,14 @@
 </template>
 
 <script>
-import 'element-ui/lib/theme-default/index.css';
-import firebase from 'firebase'
+import 'element-ui/lib/theme-default/index.css'
+import db from './db'
 import Hello from './components/Hello'
-
-const config = {
-    apiKey: "AIzaSyA-HlcV4jtbhB0sL2D74SK9RVH9oZIQgVU",
-    authDomain: "js-fuseday-2016-stream.firebaseapp.com",
-    databaseURL: "https://js-fuseday-2016-stream.firebaseio.com",
-    storageBucket: "js-fuseday-2016-stream.appspot.com",
-    messagingSenderId: "533084422648"
-};
-
-const firebaseApp = firebase.initializeApp(config);
-const db = firebaseApp.database();
 
 export default {
   name: 'app',
   firebase: {
-    articles: db.ref('/stream')
+    articles: db.ref('/stream').limitToLast(25)
   },
   computed: {
     count() {
