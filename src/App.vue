@@ -13,7 +13,7 @@
     <h2>{{ count }}</h2>
     <ul>
       <li v-for="article in articles">
-        <pre>{{ article.author }}</pre>
+        <pre>{{ article.title }}</pre>
       </li>
     </ul>
     <hello></hello>
@@ -28,7 +28,7 @@ import Hello from './components/Hello'
 export default {
   name: 'app',
   firebase: {
-    articles: db.ref('/stream').limitToLast(25)
+    articles: db.ref('/stream').limitToLast(25),
   },
   computed: {
     count() {
@@ -39,9 +39,11 @@ export default {
     Hello
   }
 }
+
 </script>
 
 <style>
 #app {
 }
+
 </style>
