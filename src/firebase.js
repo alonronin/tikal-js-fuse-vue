@@ -1,4 +1,5 @@
 import firebase from 'firebase'
+import db from './db';
 
 const config = {
   apiKey: "AIzaSyA-HlcV4jtbhB0sL2D74SK9RVH9oZIQgVU",
@@ -8,7 +9,31 @@ const config = {
   messagingSenderId: "533084422648"
 };
 
-const firebaseApp = firebase.initializeApp(config);
-const db = firebaseApp.database();
+const app = firebase.initializeApp(config);
+const appDb = app.database();
 
-export default db;
+async function init() {
+  const data = await appDb.ref('/stream_2')
+    .orderByChild('page')
+    .limitToLast(10)
+    .once('value');
+
+  const arr = Object.values(data.val()).map(item => {
+    const {uuid, title, url, text, author, published} = item;
+
+    return {
+      uuid, title, url, text, author, published
+    }
+  });
+
+  db.articles.bulkPut(arr);
+}
+
+init();
+
+// db.ref('/stream_2')
+//   .orderByChild('page')
+//   .on('child_added', function(snapshot) {
+//   console.log(snapshot.val());
+// });
+

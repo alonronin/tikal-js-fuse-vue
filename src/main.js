@@ -4,16 +4,14 @@ import Vue from 'vue'
 import ElementUI from 'element-ui'
 import locale from 'element-ui/lib/locale/lang/en'
 
-import VueFire from 'vuefire'
 import VueRouter from 'vue-router'
 
-import db from './db'
+import './firebase'
 import App from './App'
 import Home from './components/Home.vue'
 import Articles from './components/Articles'
 import Article from './components/Article'
 
-Vue.use(VueFire);
 Vue.use(ElementUI, { locale });
 Vue.use(VueRouter);
 
@@ -30,23 +28,13 @@ const router = new VueRouter({
   routes
 });
 
-const data = {
-  articles: []
-};
-
 const el = '#app';
 const components = { App };
 const template = '<App />';
 
 const app = new Vue({
   el,
-  data,
   template,
   components,
   router
 });
-
-db.articles.toArray().then(function(data){
-  app.articles.push(...data);
-});
-
