@@ -11,6 +11,7 @@ import db from './db'
 import App from './App'
 import Home from './components/Home.vue'
 import Articles from './components/Articles'
+import Article from './components/Article'
 
 Vue.use(VueFire);
 Vue.use(ElementUI, { locale });
@@ -19,6 +20,7 @@ Vue.use(VueRouter);
 const routes = [
   { path: '/', component: Home },
   { path: '/articles', component: Articles },
+  { path: '/articles/:id', component: Article }
 ];
 
 const mode = 'history';
