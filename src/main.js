@@ -6,7 +6,7 @@ import locale from 'element-ui/lib/locale/lang/en'
 
 import VueRouter from 'vue-router'
 
-import './firebase'
+import './service';
 import App from './App'
 import Home from './components/Home.vue'
 import Articles from './components/Articles'

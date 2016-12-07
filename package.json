@@ -11,8 +11,10 @@
   "dependencies": {
     "dexie": "^1.5.1",
     "element-ui": "^1.0.5",
+    "emitonoff": "0.0.10",
     "firebase": "^3.6.3",
-    "minpubsub": "0.0.2",
+    "lodash.random": "^3.2.0",
+    "lodash.samplesize": "^4.2.0",
     "vue": "^2.1.0",
     "vue-router": "^2.1.1"
   },
