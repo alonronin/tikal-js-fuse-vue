@@ -1,4 +1,5 @@
-import firebase from 'firebase'
+import firebase from 'firebase';
+import pubsub from 'minpubsub';
 import db from './db';
 
 const config = {
@@ -18,18 +19,25 @@ async function init() {
     .limitToLast(10)
     .once('value');
 
-  const arr = Object.values(data.val()).map(item => {
-    const {uuid, title, url, text, author, published} = item;
-
-    return {
-      uuid, title, url, text, author, published
-    }
+  const arr = Object.values(data.val()).map(({
+    uuid,
+    title,
+    url,
+    thread: { main_image: picture},
+    text,
+    author,
+    published
+  }) => {
+    return {uuid, title, url, picture, text, author, published};
   });
 
-  db.articles.bulkPut(arr);
+  await db.articles.bulkPut(arr);
+  //publish('/articles/update')
 }
 
 init();
+
+console.log(pubsub)
 
 // db.ref('/stream_2')
 //   .orderByChild('page')

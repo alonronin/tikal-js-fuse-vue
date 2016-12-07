@@ -12,6 +12,7 @@
     "dexie": "^1.5.1",
     "element-ui": "^1.0.5",
     "firebase": "^3.6.3",
+    "minpubsub": "0.0.2",
     "vue": "^2.1.0",
     "vue-router": "^2.1.1"
   },
