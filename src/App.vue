@@ -11,12 +11,7 @@
       <el-menu-item index="3">Orders</el-menu-item>
     </el-menu>
     <h2>{{ count }}</h2>
-    <ul>
-      <li v-for="article in articles">
-        <pre>{{ article.title }}</pre>
-      </li>
-    </ul>
-    <hello></hello>
+    <articles :articleList="articles"></articles>
   </div>
 </template>
 
@@ -24,6 +19,7 @@
 import 'element-ui/lib/theme-default/index.css'
 import db from './db'
 import Hello from './components/Hello'
+import Articles from './components/Articles'
 
 export default {
   name: 'app',
@@ -36,7 +32,8 @@ export default {
     }
   },
   components: {
-    Hello
+    Hello,
+    Articles
   }
 }
 

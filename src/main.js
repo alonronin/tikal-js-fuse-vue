@@ -2,12 +2,13 @@
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
 import ElementUI from 'element-ui'
+import locale from 'element-ui/lib/locale/lang/en'
 import VueFire from 'vuefire'
 
 import App from './App'
 
 Vue.use(VueFire);
-Vue.use(ElementUI);
+Vue.use(ElementUI, { locale  })
 
 /* eslint-disable no-new */
 new Vue({
