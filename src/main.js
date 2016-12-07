@@ -3,12 +3,25 @@
 import Vue from 'vue'
 import ElementUI from 'element-ui'
 import VueFire from 'vuefire'
+import VueRouter from 'vue-router'
 
 import db from './db'
 import App from './App'
+import Articles from './components/Articles'
 
 Vue.use(VueFire);
 Vue.use(ElementUI);
+Vue.use(VueRouter);
+
+const Home = Articles
+
+const routes = [
+  { path: '/home', component: Home },
+]
+
+const router = new VueRouter({
+  routes // short for routes: routes
+})
 
 /* eslint-disable no-new */
 const app = new Vue({
@@ -16,8 +29,9 @@ const app = new Vue({
   data: {
     articles: []
   },
-  template: '<App :articles="articles" />',
-  components: { App }
+  template: '<App />',
+  components: { App },
+  router
 });
 
 db.articles.toArray().then(function(data){

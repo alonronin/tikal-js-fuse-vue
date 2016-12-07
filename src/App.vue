@@ -7,24 +7,23 @@
         <el-menu-item index="2-1">item one</el-menu-item>
         <el-menu-item index="2-2">item two</el-menu-item>
         <el-menu-item index="2-3">item three</el-menu-item>
-      </el-submenu>
       <el-menu-item index="3">Orders</el-menu-item>
     </el-menu>
 
-    <articles :articleList="articles"></articles>
+    </el-submenu>
+    <router-view></router-view>
+
   </div>
 </template>
 
 <script>
   import 'element-ui/lib/theme-default/index.css'
   import Hello from './components/Hello'
-  import Articles from './components/Articles'
 
   export default {
     props: ['articles'],
     components: {
-      Hello,
-      Articles
+      Hello
     }
   }
 
