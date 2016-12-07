@@ -4,7 +4,7 @@
     <el-table-column prop="author" label="Author" width="180"></el-table-column>
     <el-table-column inline-template label="Title">
       <div>
-        <a :href="'/articles/' + row.uuid" target="_blank">{{ row.title }}</a>
+        <router-link :to="`/articles/${row.uuid}`">{{ row.title }}</router-link>
       </div>
     </el-table-column>
   </el-table>
