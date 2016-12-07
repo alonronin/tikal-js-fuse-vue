@@ -7,30 +7,38 @@ import VueRouter from 'vue-router'
 
 import db from './db'
 import App from './App'
+import Home from './components/Home.vue'
 import Articles from './components/Articles'
 
 Vue.use(VueFire);
 Vue.use(ElementUI);
 Vue.use(VueRouter);
 
-const Home = Articles
-
 const routes = [
-  { path: '/home', component: Home },
-]
+  { path: '/', component: Home },
+  { path: '/articles', component: Articles },
+];
+
+const mode = 'history';
 
 const router = new VueRouter({
-  routes // short for routes: routes
-})
+  mode,
+  routes
+});
 
-/* eslint-disable no-new */
+const data = {
+  articles: []
+};
+
+const el = '#app';
+const components = { App };
+const template = '<App />';
+
 const app = new Vue({
-  el: '#app',
-  data: {
-    articles: []
-  },
-  template: '<App />',
-  components: { App },
+  el,
+  data,
+  template,
+  components,
   router
 });
 
